@@ -3,9 +3,15 @@ package com.sevendays.sevendays.controller;
 import com.sevendays.sevendays.repository.SuperheroiRepository;
 
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import com.sevendays.sevendays.model.Superheroi;
@@ -28,16 +34,31 @@ public class SuperheroiController {
     }
 
     @PostMapping
-    public List<Superheroi> adicionarLista(@RequestBody List<Superheroi> superherois) {
-        return repository.saveAll(superherois);
+    public ResponseEntity<?> adicionarLista(@Valid @RequestBody List<Superheroi> superherois, BindingResult result) {
+        if (result.hasErrors()) {
+            List<String> errors = result.getAllErrors().stream()
+                    .map(error -> error.getDefaultMessage())
+                    .collect(Collectors.toList());
+            return ResponseEntity.badRequest().body(errors);
+        }
+
+        List<Superheroi> savedSuperheroes = repository.saveAll(superherois);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedSuperheroes);
     }
     
     @PutMapping
-    public Superheroi alterar(@RequestBody Superheroi superheroi) {
-        if (superheroi.getId() > 0) {
-            return repository.save(superheroi);
+    public ResponseEntity<?> alterar(@Valid @RequestBody Superheroi superheroi, BindingResult result) {
+        if (result.hasErrors()) {
+            List<String> errors = result.getAllErrors().stream()
+                    .map(error -> error.getDefaultMessage())
+                    .collect(Collectors.toList());
+            return ResponseEntity.badRequest().body(errors);
         }
-        return null;
+        if (superheroi.getId() != null && superheroi.getId() > 0) {
+            return ResponseEntity.ok(repository.save(superheroi));
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("ID do super-herói inválido.");
+        }
     }
 
     @DeleteMapping
