@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="superherois")
@@ -15,9 +16,11 @@ public class Superheroi {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Nome é obrigatório!")
     @Column(nullable = false)
     private String nome;
 
+    @NotBlank(message = "Poderes são obrigatórios!")
     @Column(nullable = false)
     private String poderes;
 
@@ -25,6 +28,7 @@ public class Superheroi {
 
     private String urlAvatar;
 
+    @NotBlank(message = "Identidade Secreta é obrigatória!")
     @Column(nullable = false)
     private String identidadeSecreta;
 
