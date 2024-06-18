@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "nome": "Homem de Ferro",
+        "poderes": "Armadura tecnológica, inteligência, força sobre-humana",
+        "origem": "Tony Stark, um gênio, bilionário, playboy e filantropo",
+        "urlAvatar": "https://example.com/images/homem-de-ferro.jpg",
+        "identidadeSecreta": "Tony Stark",
+        "universo": "Marvel"
+    },
+    {
+        "id": 2,
+        "nome": "Capitão América",
+        "poderes": "Super força, agilidade, resistência, escudo indestrutível",
+        "origem": "Steve Rogers, um soldado aprimorado durante a Segunda Guerra Mundial",
+        "urlAvatar": "https://example.com/images/capitao-america.jpg",
+        "identidadeSecreta": "Steve Rogers",
+        "universo": "Marvel"
+    },
+    {
+        "id": 3,
+        "nome": "Thor",
+        "poderes": "Força divina, controle do trovão, voar com o martelo Mjolnir",
+        "origem": "Deus nórdico do trovão, filho de Odin",
+        "urlAvatar": "https://example.com/images/thor.jpg",
+        "identidadeSecreta": "Thor Odinson",
+        "universo": "Marvel"
+    },
+    {
+        "id": 4,
+        "nome": "Viúva Negra",
+        "poderes": "Agilidade, habilidades de combate, espionagem",
+        "origem": "Natasha Romanoff, uma espiã treinada da KGB",
+        "urlAvatar": "https://example.com/images/viuva-negra.jpg",
+        "identidadeSecreta": "Natasha Romanoff",
+        "universo": "Marvel"
+    },
+    {
+        "id": 5,
+        "nome": "Hulk",
+        "poderes": "Força sobre-humana, resistência, regeneração rápida",
+        "origem": "Bruce Banner, um cientista exposto a radiação gama",
+        "urlAvatar": "https://example.com/images/hulk.jpg",
+        "identidadeSecreta": "Bruce Banner",
+        "universo": "Marvel"
+    }
+]
