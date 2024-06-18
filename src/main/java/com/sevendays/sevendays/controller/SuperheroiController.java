@@ -1,6 +1,9 @@
 package com.sevendays.sevendays.controller;
 
 import com.sevendays.sevendays.repository.SuperheroiRepository;
+
+import io.swagger.v3.oas.annotations.Operation;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +20,11 @@ public class SuperheroiController {
     @GetMapping
     public List<Superheroi> listar() {
         return repository.findAll();
+    }
+
+    @GetMapping("/search")
+    public List<Superheroi> buscarPorPoderes(@RequestParam String poderes) {
+        return repository.findByPoderesContainingIgnoreCase(poderes);
     }
 
     @PostMapping
